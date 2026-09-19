@@ -66,12 +66,7 @@ const DatasetEmptyState: React.FC<DatasetEmptyStateProps> = ({
             )}
           </div>
         )}
-        <Button variant="outline" size="sm" className="self-start" asChild>
-          <a href={docsUrl} target="_blank" rel="noreferrer">
-            View docs
-            <ExternalLink className="ml-1.5 size-3.5" />
-          </a>
-        </Button>
+        
       </div>
       <img
         src={imageUrl}

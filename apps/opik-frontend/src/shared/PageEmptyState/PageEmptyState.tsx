@@ -43,14 +43,7 @@ const PageEmptyState: React.FC<PageEmptyStateProps> = ({
             {primaryActionLabel}
           </Button>
         )}
-        {docsUrl && (
-          <Button variant="secondary" size="sm" asChild>
-            <a href={docsUrl} target="_blank" rel="noreferrer">
-              {docsLabel}
-              <ExternalLink className="ml-1.5 size-3.5" />
-            </a>
-          </Button>
-        )}
+        
       </div>
     </div>
   );

@@ -969,15 +969,7 @@ export const ThreadsTab: React.FC<ThreadsTabProps> = ({
               >
                 Quickstart guide
               </button>
-              <a
-                href={buildDocsUrl("/tracing/advanced/log_chat_conversations")}
-                target="_blank"
-                rel="noreferrer"
-                className="comet-body-s inline-flex items-center gap-1 underline underline-offset-4 hover:text-primary"
-              >
-                View docs
-                <ExternalLink className="size-3" />
-              </a>
+              
             </div>
           </DataTableEmptyContent>
         }

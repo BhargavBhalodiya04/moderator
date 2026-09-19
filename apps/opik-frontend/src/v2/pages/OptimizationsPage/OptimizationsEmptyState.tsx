@@ -91,16 +91,7 @@ const OptimizationsEmptyState: React.FC<OptimizationsEmptyStateProps> = ({
         </div>
         <div>
           <Button variant="outline" size="sm" asChild>
-            <a
-              href={buildDocsUrl(
-                "/development/optimization-runs/optimization_studio",
-              )}
-              target="_blank"
-              rel="noreferrer"
-            >
-              View docs
-              <ExternalLink className="ml-1.5 size-3.5" />
-            </a>
+            
           </Button>
         </div>
       </div>
