@@ -1,0 +1,57 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push Frontend image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./apps/opik-frontend
+          file: ./apps/opik-frontend/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/moderator-frontend:latest
+          build-args: |
+            VITE_APP_VERSION=latest
+
+      - name: Build and push Backend image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./apps/opik-backend
+          file: ./apps/opik-backend/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/moderator-backend:latest
+
+      - name: Build and push Python Backend image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./apps/opik-python-backend
+          file: ./apps/opik-python-backend/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/moderator-python-backend:latest
+
+      - name: Build and push Guardrails Backend image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./apps/opik-guardrails-backend
+          file: ./apps/opik-guardrails-backend/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/moderator-guardrails-backend:latest
