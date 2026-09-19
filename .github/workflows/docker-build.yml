@@ -1,4 +1,4 @@
-name: Build and Push Docker Images
+name: Build and Push Docker Image
 
 on:
   push:
@@ -31,27 +31,3 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/moderator-frontend:latest
           build-args: |
             VITE_APP_VERSION=latest
-
-      - name: Build and push Backend image
-        uses: docker/build-push-action@v4
-        with:
-          context: ./apps/opik-backend
-          file: ./apps/opik-backend/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/moderator-backend:latest
-
-      - name: Build and push Python Backend image
-        uses: docker/build-push-action@v4
-        with:
-          context: ./apps/opik-python-backend
-          file: ./apps/opik-python-backend/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/moderator-python-backend:latest
-
-      - name: Build and push Guardrails Backend image
-        uses: docker/build-push-action@v4
-        with:
-          context: ./apps/opik-guardrails-backend
-          file: ./apps/opik-guardrails-backend/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/moderator-guardrails-backend:latest

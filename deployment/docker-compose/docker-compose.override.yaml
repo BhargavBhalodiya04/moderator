@@ -17,12 +17,12 @@ services:
 
   zookeeper:
     ports:
-      - "${ZOOKEEPER_PORT:-2181}:2181"
+      - "${ZOOKEEPER_PORT:-12181}:2181"
 
   minio:
     ports:
       - "${MINIO_API_PORT:-9001}:9000"
-      - "${MINIO_CONSOLE_PORT:-9090}:9090"
+      - "19091:9090"
 
   backend:
     ports: !override

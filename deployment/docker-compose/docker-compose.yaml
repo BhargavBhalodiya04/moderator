@@ -153,6 +153,7 @@ services:
     environment:
       # WARNING: Do not set OPIK_VERSION as env var here. It's a multi-stage build, so build and runtime values can differ.
       DOCKER_BUILDKIT: 1
+      OPIK_VERSION: 1.0-SNAPSHOT
       # Persistent anonymous installation ID passed from launcher script
       OPIK_ANONYMOUS_ID: ${OPIK_ANONYMOUS_ID:-}
       STATE_DB_PROTOCOL: "jdbc:mysql://"
